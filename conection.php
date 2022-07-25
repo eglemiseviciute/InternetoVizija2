@@ -1,0 +1,1 @@
+<?php $con = mysqli_connect("localhost" , "root" , "" , "internetopuslapis") or die("Connection Failed");
