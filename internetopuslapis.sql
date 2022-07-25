@@ -47,6 +47,20 @@ CREATE TABLE `allservice` (
 INSERT INTO `allservice` (`id`, `service_name`, `price`, `billing`, `specs`, `components`, `IP(s)`, `backups`, `hostname`, `Node`) VALUES
 (1, 'Linux VPS - Linux 8', '14.99 EUR', 'Monthly', 'Processor: 2 x 2.6 GHz\r\nMemory: 8192 MB\r\nStorage: 80 GB\r\nBandwidth: 1000 Mbps (Monthly limit: 16 TB)', '5x Faster SSD storage ( 1.00 EUR )\r\n1 Gbps port speed ( 1.00 EUR )', '582.148552.485', '', 'mikina.r.times4.kal', 'k10-c1-lt1');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(25) NOT NULL,
+  `user_id` bigint(255) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `data` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
@@ -58,6 +72,15 @@ ALTER TABLE `allservice`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `data` (`data`),
+  ADD KEY `user_name` (`user_name`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -66,6 +89,12 @@ ALTER TABLE `allservice`
 --
 ALTER TABLE `allservice`
   MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
