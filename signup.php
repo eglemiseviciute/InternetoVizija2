@@ -5,35 +5,31 @@ $_SESSION;
 
 
 
-include ("conection.php");
-include ("functions.php");
+include("conection.php");
+include("functions.php");
 
-if($_SERVER['REQUEST_METHOD'] == "POST"){
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
     //SOMETHING WAS POSTED
 
-$user_name = $_POST['user_name'];
-$password =$_POST['password'];
+    $user_name = $_POST['user_name'];
+    $password = $_POST['password'];
 
-if(!empty($user_name)&& !empty($password)){
+    if (!empty($user_name) && !empty($password)) {
 
-    $user_id = uniqid("",'bool') ;
+        $user_id = uniqid("", 'bool');
 
-    $query = "insert into users (user_name, password,user_id) values ('$user_name','$password','$user_id') ";
+        $query = "insert into users (user_name, password,user_id) values ('$user_name','$password','$user_id') ";
 
-mysqli_query($con, $query);
-
-
-
-
-header("Location: login.php");
-die;
-
-}else{
-    echo "please enter some valid information!";
-}
+        mysqli_query($con, $query);
 
 
 
+
+        header("Location: login.php");
+        die;
+    } else {
+        echo "please enter some valid information!";
+    }
 }
 
 
@@ -44,6 +40,7 @@ die;
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,45 +49,47 @@ die;
 
     <title>Document</title>
 </head>
+
 <body>
-<header>
-    <section class="navbar">
-        <div class="container">
-            <div class="logo" >
-<h1>InternetoVizija</h1>
+    <header>
+        <section class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1>InternetoVizija</h1>
+                </div>
+
+
             </div>
-            
-            
-        </div>
-    </section>
+        </section>
     </header>
 
-    
-        <div class="form">
-            
+
+    <div class="form">
 
 
 
 
-         <div class="register">
-<h3>Register Here</h3>
-         
-         <form  method="post">
-    <div class="form-group">
-        <label>Username</label>
-        <input id="text" type="text" name="user_name">
 
-    </div>
-    <div class="form-group">
-        <label>Password</label>
-        <input id="text" type="password" name="password">
+        <div class="register">
+            <h3>Register Here</h3>
 
-    </div>
-    <button type="submit" >Register</button>
-    <p>Already a member? <a href="login.php">LogIn</a></p>
-</form>
-         </div>
-        
+            <form method="post">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input id="text" type="text" name="user_name">
+
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input id="text" type="password" name="password">
+
+                </div>
+                <button type="submit">Register</button>
+                <p>Already a member? <a href="login.php">LogIn</a></p>
+            </form>
+        </div>
+
     </div>
 </body>
+
 </html>
